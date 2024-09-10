@@ -1,0 +1,189 @@
+body {
+  font-family: Arial, sans-serif;
+  background-image: url("7.jpeg");
+  /* Corrected syntax */
+  background-size: cover;
+  /* Ensure the image covers the entire background */
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Prevent repeating the image */
+  color: #fbfbfb;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+
+#app {
+  background-color: #001f3f;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 700px;
+  /* Adjusted for better visibility */
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+select,
+input[type="file"] {
+  width: 100%;
+  padding: 14px;
+  /* Increased padding for better usability */
+  border-radius: 6px;
+  border: 1px solid #004080;
+  background-color: #ffffff;
+  color: #333;
+  box-sizing: border-box;
+  margin-top: 4px;
+}
+
+input[type="file"] {
+  padding: 0;
+}
+
+button {
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  /* Adjusted padding for better visibility */
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.captcha-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.captcha-text {
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #000000;
+  padding: 12px;
+  border: 1px solid #004080;
+  border-radius: 6px;
+}
+
+.captcha-container button {
+  background-color: #000000;
+  color: #f6f0f0;
+  font-size: 16px;
+  padding: 8px 16px;
+}
+
+.captcha-container button:hover {
+  background-color: #003366;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  padding-right: 40px;
+  /* Space for the password toggle button */
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #00aaff;
+}
+
+.password-strength {
+  height: 8px;
+  background-color: #ddd;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.password-strength div {
+  height: 100%;
+  border-radius: 4px;
+}
+
+.password-requirements {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.password-requirements li {
+  color: #666;
+}
+
+.password-requirements li.valid {
+  color: #28a745;
+}
+
+.step-indicator {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.step-indicator div {
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background-color: #ddd;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+  position: relative;
+}
+
+.step-indicator div:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 20px;
+  height: 2px;
+  background-color: #ddd;
+}
+
+.active-step {
+  background-color: #7a42f4;
+}

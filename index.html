@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEST Vue</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <form @submit.prevent="registerAnswer">
+      <div class="form-group">
+        <label for="itemname">ชื่อ*:</label>
+        <input type="text" id="itemname" placeholder="ชื่อ*:" v-model="itemname" required>
+      </div>
+
+      <div class="form-group">
+        <label for="itememail">Email (example@email.com):</label>
+        <input type="email" id="itememail" placeholder="email(example@email.com):" v-model="itememail" required>
+      </div>
+
+      <div class="form-group">
+        <label for="itemtel">เบอร์โทร*:</label>
+        <input type="tel" id="itemtel" placeholder="เบอร์โทร*:" v-model="itemtel" required>
+      </div>
+
+      <div class="form-group">
+        <label for="itempassword">Password*:</label>
+        <div class="password-wrapper">
+          <input :type="passwordType" id="itempassword" placeholder="Password*:" v-model="itempassword" required>
+          <button type="button" class="password-toggle" @click="togglePassword">
+            <span v-if="showPassword">&#128065;</span>
+            <span v-else>&#128065;</span>
+          </button>
+        </div>
+        <!-- Password strength bar and mismatch error -->
+        <div v-if="passwordMismatch" class="error-message">Passwords do not match.</div>
+        <div class="password-strength">
+          <div :style="{ width: passwordStrength + '%', backgroundColor: strengthColor }"></div>
+        </div>
+        <ul class="password-requirements">
+          <li :class="{ valid: hasUppercase }">Must contain at least one uppercase letter</li>
+          <li :class="{ valid: hasLowercase }">Must contain at least one lowercase letter</li>
+          <li :class="{ valid: hasNumber }">Must contain at least one number</li>
+          <li :class="{ valid: hasMinLength }">Must be at least 8 characters long</li>
+        </ul>
+      </div>
+
+      <div class="form-group">
+        <label for="itemrepassword">ยืนยันรหัสผ่าน*:</label>
+        <input :type="passwordType" id="itemrepassword" placeholder="ยืนยันรหัสผ่าน*:" v-model="itemrepassword"
+          @input="checkPasswordMatch" required>
+      </div>
+
+      <div class="form-group">
+        <label for="itembrith">วันเดือนปีเกิด*:</label>
+        <input type="date" id="itembrith" placeholder="วันเดือนปีเกิด*:" v-model="itembrith" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cars">เลือกประเทศ:</label>
+        <select v-model="carSelected" id="cars">
+          <option disabled value="">กรุณาเลือกประเทศ</option>
+          <option>ประเทศไทย</option>
+          <option>ประเทศสิงคโปร์</option>
+          <option>ประเทศเกาหลีใต้</option>
+          <option>ประเทศเวียดนาม</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Choose a file:</label>
+        <input @change="updateVal" type="file" accept="image/*">
+        <img v-if="imageUrl" :src="imageUrl" alt="Image Preview" class="image-preview">
+      </div>
+
+      <div class="form-group">
+        <label>
+          <input type="checkbox" v-model="checkbox" value="ยอมรับเงื่อนไขการใช้งาน">ยอมรับเงื่อนไขการใช้งาน
+        </label>
+      </div>
+
+      <div class="form-group">
+        <label for="captcha">CAPTCHA*:</label>
+        <div class="captcha-container">
+          <span class="captcha-text">{{ captchaCode }}</span>
+          <button type="button" @click="generateCaptcha">Refresh CAPTCHA</button>
+        </div>
+        <input type="text" id="captcha" placeholder="Enter CAPTCHA:" v-model="captchaInput" required>
+        <p v-if="captchaError" class="error-message">CAPTCHA is incorrect. Please try again.</p>
+      </div>
+
+      <div class="form-group">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+
+    <div v-if="submitted" class="submitted-data">
+      <h2>Submitted Data</h2>
+      <p><strong>ชื่อ:</strong> {{ itemname }}</p>
+      <p><strong>Email:</strong> {{ itememail }}</p>
+      <p><strong>เบอร์โทร:</strong> {{ itemtel }}</p>
+      <p><strong>Password:</strong> {{ itempassword }}</p>
+      <p><strong>ยืนยันรหัสผ่าน:</strong> {{ itemrepassword }}</p>
+      <p><strong>วันเดือนปีเกิด:</strong> {{ itembrith }}</p>
+      <p><strong>เลือกประเทศ:</strong> {{ carSelected }}</p>
+      <p><strong>File:</strong> {{ fileInp }}</p>
+      <p><strong>Terms Accepted:</strong> {{ checkbox }}</p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
